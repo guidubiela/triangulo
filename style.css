@@ -1,0 +1,9 @@
+.desenho {
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.desenhoT {
+    height: 0;
+    width: 0;
+}
