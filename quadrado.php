@@ -49,6 +49,10 @@
                 }
             }
             echo "<br>";
+            echo "Área: " . $quadrado->area($lado);
+            echo "<br>";
+            echo "Perímetro: " . $quadrado->perimetro($lado);
+            echo "<br>";
             echo $quadrado->desenhar();
         }
     ?>

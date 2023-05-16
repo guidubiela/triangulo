@@ -63,8 +63,8 @@
             }
             echo "<br>";
             echo $triangulo->getArea();
-            echo "<br>";
-            echo $triangulo->desenhar($tipoTriangulo);
+            echo "<br><br>";
+            echo $triangulo->desenhar();
         }
     ?>
 </body>

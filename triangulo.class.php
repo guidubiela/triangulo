@@ -27,7 +27,7 @@
             return $this->id;
         }
         public function getTipoTriangulo() {
-            return $this->TipoTriangulo;
+            return $this->tipoTriangulo;
         }
         public function getLado1() {
             return $this->lado1;
@@ -107,23 +107,33 @@
         public function listar() {}
 
         // método desenho do triangulo
-        public function desenhar($tipoTriangulo) {
-            if($tipoTriangulo == 'equilatero'){
+        public function desenhar() {
+            if($this->getTipoTriangulo() == 'equilatero' && $this->getLado1() == $this->getLado2() && $this->getLado1() == $this->getLado3() && $this->getLado2() == $this->getLado3()){
                 $desenho = "<div class='desenhoT' style='
                                     height: 0;
                                     width: 0;
-                                    border-bottom:{$this->getArea()}{$this->getMedida()} solid {$this->getCor()};
-                                    border-left:{$this->getArea()}{$this->getMedida()} solid transparent;
-                                    border-right:{$this->getArea()}{$this->getMedida()} solid transparent;
-                                    border-top:{$this->getArea()}{$this->getMedida()} solid transparent;'>";
+                                    border-bottom:{$this->getLado1()}{$this->getMedida()} solid {$this->getCor()};
+                                    border-left:{$this->getLado2()}{$this->getMedida()} solid transparent;
+                                    border-right:{$this->getLado3()}{$this->getMedida()} solid transparent;'>";
             }
-            elseif($tipoTriangulo == 'isosceles'){
+            elseif($this->getTipoTriangulo() == 'isosceles' && $this->getLado1() == $this->getLado2() || $this->getLado1() == $this->getLado3() || $this->getLado2() == $this->getLado3()){
                 $desenho = "<div class='desenhoT' style='
                                     height: 0;
                                     width: 0;
-                                    border-bottom:{$this->getArea()}{$this->getMedida()} solid {$this->getCor()};
-                                    border-left:{$this->getArea()}{$this->getMedida()} solid transparent;
-                                    border-right:{$this->getArea()}{$this->getMedida()} solid transparent;'>";
+                                    border-bottom:{$this->getLado2()}{$this->getMedida()} solid {$this->getCor()};
+                                    border-left:{$this->getLado1()}{$this->getMedida()} solid transparent;
+                                    border-right:{$this->getLado1()}{$this->getMedida()} solid transparent;'>";
+            }
+            elseif($this->getTipoTriangulo() == 'escaleno' && $this->getLado1() != $this->getLado2() && $this->getLado1() != $this->getLado3() && $this->getLado2() != $this->getLado3()){
+                $desenho = "<div class='desenhoT' style='
+                                    height: 0;
+                                    width: 0;
+                                    border-bottom:{$this->getLado1()}{$this->getMedida()} solid {$this->getCor()};
+                                    border-left:{$this->getLado2()}{$this->getMedida()} solid transparent;
+                                    border-right:{$this->getLado3()}{$this->getMedida()} solid transparent;'>";
+            }
+            else{
+                $desenho = "Valores inválidos de acordo com o tipo de triângulo";
             }
             return $desenho;
         }

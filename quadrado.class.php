@@ -53,16 +53,55 @@
 
         // métodos do banco
 
-        public function inserir() {}
-        public function excluir() {}
+        public function inserir() {
+            $sql = 'INSERT INTO quadrado (lado, cor, medida)
+                            VALUES(:lado, :cor, :medida)';
+
+            require_once('config/config.inc.php');
+
+            $conexao = new PDO(MYSQL_DNS, MYSQL_USUARIO, MYSQL_SENHA);
+
+            $comando = $conexao->prepare($sql);
+            $comando->bindValue(':lado', $this->getLado());
+            $comando->bindValue(':cor', $this->getCor());
+            $comando->bindValue(':medida', $this->getMedida());
+            $comando->execute();
+            
+            return $comando;
+        }
+        public function excluir() {
+            $sql = 'DELETE FROM quadrado WHERE id = :id';
+
+            require_once('config/config.inc.php');
+
+            $conexao = new PDO(MYSQL_DNS, MYSQL_USUARIO, MYSQL_SENHA);
+
+            $comando = $conexao->prepare($sql);
+            $comando->bindValue(':id', $this->getId());;
+            $comando->execute();
+            
+            return $comando;
+        }
         public function editar() {}
         public function listar() {}
+
+        // método calcular área
+        public function area($lado) {
+            $area = pow($lado, 2);
+            return $area;
+        }
+
+        // método calcular perímetro
+        public function perimetro($lado) {
+            $per = $lado * 4;
+            return $per;
+        }
 
         // método desenho do quadrado
         public function desenhar() {
             $desenho = "<div class='desenho' style='width:{$this->getLado()}{$this->getMedida()};
                                     height:{$this->getLado()}{$this->getMedida()};
-                                    background-color:{$this->getCor()}'>";
+                                    background-color:{$this->getCor()};'>";
             return $desenho;
         }
     }
