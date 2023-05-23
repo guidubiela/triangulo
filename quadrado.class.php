@@ -82,8 +82,12 @@
             
             return $comando;
         }
-        public function editar() {}
-        public function listar() {}
+        public function editar() {
+
+        }
+        public function listar() {
+            
+        }
 
         // método calcular área
         public function area($lado) {

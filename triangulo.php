@@ -24,9 +24,9 @@
                     <option value="escaleno">Escaleno</option>
                 </select>
                 <br>
-                Lado 1 <input type="number" name="lado1" id="lado1"> <br>
-                Lado 2 <input type="number" name="lado2" id="lado2"> <br>
-                Lado 3 <input type="number" name="lado3" id="lado3"> <br>
+                Lado 1 <input type="text" name="lado1" id="lado1"> <br>
+                Lado 2 <input type="text" name="lado2" id="lado2"> <br>
+                Lado 3 <input type="text" name="lado3" id="lado3"> <br>
                 Cor <input type="color" name="cor" id="cor"> <br>
                 Medida
                 <select name="medida" id="medida">

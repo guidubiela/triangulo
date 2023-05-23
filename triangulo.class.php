@@ -89,8 +89,8 @@
                 throw new Exception('Medida do triângulo inválida. Informe uma medida válida');
         }
         public function setArea($tipoTriangulo, $lado1, $lado2, $lado3) {
-            if($tipoTriangulo == 'equilatero' || $tipoTriangulo == 'isosceles'){
-                $area = $lado1 * $lado2 / 2;
+            if($tipoTriangulo == 'equilatero'){
+                $area = pow($lado1, 2) * sqrt(3) / 4;
             }
             else{
                 $p = ($lado1 + $lado2 + $lado3) / 2;
@@ -112,6 +112,7 @@
                 $desenho = "<div class='desenhoT' style='
                                     height: 0;
                                     width: 0;
+                                    border-top: 0px;
                                     border-bottom:{$this->getLado1()}{$this->getMedida()} solid {$this->getCor()};
                                     border-left:{$this->getLado2()}{$this->getMedida()} solid transparent;
                                     border-right:{$this->getLado3()}{$this->getMedida()} solid transparent;'>";
@@ -120,14 +121,16 @@
                 $desenho = "<div class='desenhoT' style='
                                     height: 0;
                                     width: 0;
-                                    border-bottom:{$this->getLado2()}{$this->getMedida()} solid {$this->getCor()};
-                                    border-left:{$this->getLado1()}{$this->getMedida()} solid transparent;
-                                    border-right:{$this->getLado1()}{$this->getMedida()} solid transparent;'>";
+                                    border-top: 0px;
+                                    border-bottom:{$this->getLado1()}{$this->getMedida()} solid {$this->getCor()};
+                                    border-left:{$this->getLado2()}{$this->getMedida()} solid transparent;
+                                    border-right:{$this->getLado3()}{$this->getMedida()} solid transparent;'>";
             }
             elseif($this->getTipoTriangulo() == 'escaleno' && $this->getLado1() != $this->getLado2() && $this->getLado1() != $this->getLado3() && $this->getLado2() != $this->getLado3()){
                 $desenho = "<div class='desenhoT' style='
                                     height: 0;
                                     width: 0;
+                                    border-top: 0px;
                                     border-bottom:{$this->getLado1()}{$this->getMedida()} solid {$this->getCor()};
                                     border-left:{$this->getLado2()}{$this->getMedida()} solid transparent;
                                     border-right:{$this->getLado3()}{$this->getMedida()} solid transparent;'>";
